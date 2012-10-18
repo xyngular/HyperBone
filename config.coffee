@@ -3,20 +3,20 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        'javascripts/app.js': /^app/
-        'javascripts/vendor.js': /^vendor/
-        'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
-        'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
+        'scripts/app.js': /^app/
+        'scripts/vendor.js': /^vendor/
+        'test/scripts/test.js': /^test(\/|\\)(?!vendor)/
+        'test/scripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
       order:
         before: []
 
     stylesheets:
       joinTo:
-        'stylesheets/app.css': /^(app|vendor)/
-        'test/stylesheets/test.css': /^test/
+        'styles/app.css': /^(app|vendor)/
+        'test/styles/test.css': /^test/
       order:
         before: []
         after: []
 
     templates:
-      joinTo: 'javascripts/app.js'
+      joinTo: 'scripts/app.js'
