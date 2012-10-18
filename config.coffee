@@ -7,6 +7,3 @@ exports.config =
         'test/scripts/test.js': /^test/
       order:
         before: []
-
-    templates:
-      joinTo: 'scripts/app.js'
