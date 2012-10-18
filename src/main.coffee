@@ -1,1 +1,1 @@
-console.log 'Hello, world.'
+window.HyperBone = window.HyperBone or {}
