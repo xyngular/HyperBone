@@ -8,13 +8,5 @@ exports.config =
       order:
         before: []
 
-    stylesheets:
-      joinTo:
-        'styles/app.css': /^(app|vendor)/
-        'test/styles/test.css': /^test/
-      order:
-        before: []
-        after: []
-
     templates:
       joinTo: 'scripts/app.js'
