@@ -3,7 +3,7 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        'backbone.hyperbone.js': /^app/
+        'backbone.hyperbone.js': /^src/
         'test/test.js': /^test/
       order:
         before: []
