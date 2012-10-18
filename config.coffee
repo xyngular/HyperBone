@@ -3,7 +3,7 @@ exports.config =
   files:
     javascripts:
       joinTo:
-        'scripts/app.js': /^app/
+        'scripts/backbone.hyperbone.js': /^app/
         'scripts/vendor.js': /^vendor/
         'test/scripts/test.js': /^test(\/|\\)(?!vendor)/
         'test/scripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
