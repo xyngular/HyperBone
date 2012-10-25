@@ -1,1 +1,1 @@
-window.HyperBone = window.HyperBone or {}
+window.hyperbone = window.HyperBone or {}
