@@ -52,7 +52,6 @@ hyperbone.Bone = class Bone
 
 			modelName = hyperbone.util.naturalModelName resourceName
 
-
 			models[modelName] = hyperbone.Model.factory resource.href, @
 
 		models
