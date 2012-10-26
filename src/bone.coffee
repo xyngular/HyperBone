@@ -1,14 +1,26 @@
 hyperbone = window.hyperbone = window.hyperbone or {}
 
-hyperbone.naturalModelName = (modelName) ->
-	parts = modelName.split('_')
-	natural = ''
+# Maps resource names from the API to better names for API name discovery.
+# TODO: Deprecate this.
+resource_names_map =
+	cartitems: 'cart_item'
+	countries: 'country'
+	categories: 'category'
+	authenticate: 'authenticate'
+	currencies: 'currency'
 
-	for part in parts
-		upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
-		natural = natural + upperPart
+hyperbone.util =
+	naturalModelName: (pluralName) ->
+		modelName = resource_names_map[pluralName] or pluralName.substring 0, pluralName.length - 1
 
-	natural
+		parts = modelName.split('_')
+		natural = ''
+
+		for part in parts
+			upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
+			natural = natural + upperPart
+
+		natural
 
 hyperbone.Bone = class Bone
 	resources: {}
@@ -38,17 +50,23 @@ hyperbone.Bone = class Bone
 	updateSchema: (response) =>
 		namespaces = {}
 
-		for namespace of response._embedded
-			namespaces[namespace] = @discoverNamespace response._embedded[namespace]
+		for namespaceName of response._embedded
+			namespace = response._embedded[namespaceName]
+
+			namespaces[namespaceName] = @discoverResources namespace
 
 		@namespaces = namespaces
 
-	discoverNamespace: (namespace) =>
-		for namespaceName of namespace._links
-			if namespaceName is 'self'
+	discoverResources: (namespace) =>
+		models = {}
+
+		for resourceName of namespace._links
+			if resourceName is 'self'
 				continue
 
-			namespaceName = hyperbone.naturalModelName namespaceName
+			resourceName = hyperbone.util.naturalModelName resourceName
+
+			models[resourceName] = 'wat'
 
 		namespace
 
