@@ -7,6 +7,8 @@ hyperbone.Bone = class Bone
 
 	constructor: (@originalOptions) ->
 		@parseOptions()
+
+	discover: ->
 		@readSchema()
 
 	parseOptions: =>
