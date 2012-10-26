@@ -45,12 +45,15 @@ hyperbone.Bone = class Bone
 		models = {}
 
 		for resourceName of namespace._links
+			resource = namespace._links[resourceName]
+
 			if resourceName is 'self'
 				continue
 
-			resourceName = hyperbone.util.naturalModelName resourceName
+			modelName = hyperbone.util.naturalModelName resourceName
 
-			models[resourceName] = 'wat'
+
+			models[modelName] = hyperbone.Model.factory resource.href, @
 
 		models
 
