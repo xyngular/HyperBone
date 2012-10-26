@@ -1,5 +1,3 @@
-hyperbone = window.hyperbone = window.hyperbone or {}
-
 # Maps resource names from the API to better names for API name discovery.
 # TODO: Deprecate this.
 resource_names_map =
