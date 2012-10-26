@@ -68,7 +68,7 @@ hyperbone.Bone = class Bone
 
 			models[resourceName] = 'wat'
 
-		namespace
+		models
 
 	request: (url, options) =>
 		# Wraps jQuery's ajax call in order to automatically convert requests between
