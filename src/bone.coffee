@@ -6,6 +6,8 @@ hyperbone.Bone = class Bone
 	registry: {}
 
 	constructor: (@originalOptions) ->
+		_.extend @, Backbone.Events
+
 		@parseOptions()
 
 	discover: ->
@@ -34,6 +36,7 @@ hyperbone.Bone = class Bone
 			namespaces[namespaceName] = @discoverResources namespace
 
 		@namespaces = namespaces
+		@trigger 'discovered'
 
 	discoverResources: (namespace) =>
 		models = {}
