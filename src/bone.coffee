@@ -10,6 +10,9 @@ hyperbone.Bone = class Bone
 
 		@parseOptions()
 
+		if @originalOptions.autoDiscover? and @originalOptions.autoDiscover is true
+			@originalOptions.discover()
+
 	discover: ->
 		@readSchema()
 
