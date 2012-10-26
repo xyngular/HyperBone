@@ -13,5 +13,6 @@ exports.config =
         'test/test.js': /^test/
       order:
         before: [
-          'src/main.coffee'
+          'src/main.coffee',
+          'src/util.coffee'
         ]
