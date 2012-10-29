@@ -1,4 +1,11 @@
 hyperbone.Model = class HyperModel extends Backbone.Model
+	url: ->
+		if @has '_links'
+			links = @get '_links'
+			links.self.href
+
+		else
+			Backbone.Model.prototype.url.call @
 
 	@factory: (endpoint, bone) ->
 
