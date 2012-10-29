@@ -16,17 +16,13 @@ hyperbone.Model = class HyperModel extends Backbone.Model
 		if url.substring (url.length - 1) != '/'
 			split_url[0] += '/'
 
+		url_params = split_url.join '?'
+
 		# Ensure that json-p is being used properly if necessary
 		if @bone.registry.communicationType == 'jsonp'
-			split_url.push 'callback=?'
-			split_url.push 'format=json-p'
+			url_params += '&format=json-p&callback=?'
 
-		# Join any excess options back into the URL
-		if split_url.length
-			url += '?'
-			url += split_url.join '&'
-
-		url
+		url + '?' + url_params
 
 	@factory: (endpoint, bone) ->
 
