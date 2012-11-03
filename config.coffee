@@ -15,5 +15,6 @@ exports.config =
         before: [
           'src/main.coffee',
           'src/util.coffee',
+          'src/service_types/base.coffee'
           'src/service_types/hal.coffee'
         ]
