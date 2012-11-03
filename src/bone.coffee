@@ -1,10 +1,11 @@
 hyperbone.Bone = class Bone
 	models: {}
-
 	registry: {}
 
 	constructor: (@originalOptions) ->
 		_.extend @, Backbone.Events
+
+		_.extend @registry, @originalOptions
 
 		@parseOptions()
 
@@ -15,12 +16,10 @@ hyperbone.Bone = class Bone
 		@readSchema()
 
 	parseOptions: =>
-		@registry.root = @originalOptions.rootUrl or @originalOptions.root
-
-		if !@originalOptions.communicationType?
+		if !@registry.communicationType?
 			@registry.communicationType = 'cors'
 		else
-			@registry.communicationType = @originalOptions.communicationType.toLowerCase()
+			@registry.communicationType = @registry.communicationType.toLowerCase()
 
 	readSchema: =>
 		# Discovers our API endpoints.
