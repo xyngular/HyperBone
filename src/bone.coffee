@@ -1,6 +1,4 @@
 hyperbone.Bone = class Bone
-	resources: {}
-
 	models: {}
 
 	registry: {}
