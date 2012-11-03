@@ -38,7 +38,4 @@ hyperbone.Bone = class Bone
 		if @registry.communicationType == 'jsonp'
 			options.crossDomain = options.crossDomain or true
 
-			options.data = options.data or {}
-			options.data.format = 'json-p'
-
-		jQuery.ajax url, options
+		@service.request url, options
