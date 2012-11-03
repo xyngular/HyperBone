@@ -1,12 +1,14 @@
 hyperbone.Bone = class Bone
 	models: {}
 
+	service: null
+
 	registry:
     communicationType: 'cors'
+    serviceType: hyperbone.serviceTypes.HALServiceType
 
 	constructor: (@originalOptions) ->
 		_.extend @, Backbone.Events
-
 		_.extend @registry, @originalOptions
 
 		@parseOptions()
@@ -14,28 +16,14 @@ hyperbone.Bone = class Bone
 		if @originalOptions.autoDiscover? and @originalOptions.autoDiscover is true
 			@originalOptions.discover()
 
-	discover: ->
-		@readSchema()
-
 	parseOptions: =>
 		@registry.communicationType = @registry.communicationType.toLowerCase()
 
-	readSchema: =>
-		# Discovers our API endpoints.
+		@service = new @registry.serviceType @
 
+	discover: ->
 		@request @registry.root,
-			success: @discoverResources
-
-	discoverResources: (apiRoot) =>
-		for resourceName of apiRoot._links
-			resource = apiRoot._links[resourceName]
-
-			if resourceName is 'self'
-				continue
-
-			modelName = hyperbone.util.naturalModelName resourceName
-
-			@models[modelName] = hyperbone.Model.factory resource.href, @
+			success: @service.discoverResources
 
 	request: (url, options) =>
 		# Wraps jQuery's ajax call in order to automatically convert requests between

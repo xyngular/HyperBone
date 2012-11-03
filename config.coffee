@@ -14,5 +14,6 @@ exports.config =
       order:
         before: [
           'src/main.coffee',
-          'src/util.coffee'
+          'src/util.coffee',
+          'src/service_types/hal.coffee'
         ]
