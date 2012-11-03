@@ -1,7 +1,7 @@
 hyperbone.Bone = class Bone
 	resources: {}
 
-	namespaces: {}
+	models: {}
 
 	registry: {}
 
@@ -28,33 +28,18 @@ hyperbone.Bone = class Bone
 		# Discovers our API endpoints.
 
 		@request @registry.root,
-			success: @updateSchema
+			success: @discoverResources
 
-	updateSchema: (response) =>
-		namespaces = {}
-
-		for namespaceName of response._embedded
-			namespace = response._embedded[namespaceName]
-
-			namespaces[namespaceName] = @discoverResources namespace
-
-		@namespaces = namespaces
-		@trigger 'discovered'
-
-	discoverResources: (namespace) =>
-		models = {}
-
-		for resourceName of namespace._links
-			resource = namespace._links[resourceName]
+	discoverResources: (apiRoot) =>
+		for resourceName of apiRoot._links
+			resource = apiRoot._links[resourceName]
 
 			if resourceName is 'self'
 				continue
 
 			modelName = hyperbone.util.naturalModelName resourceName
 
-			models[modelName] = hyperbone.Model.factory resource.href, @
-
-		models
+			@models[modelName] = hyperbone.Model.factory resource.href, @
 
 	request: (url, options) =>
 		# Wraps jQuery's ajax call in order to automatically convert requests between
