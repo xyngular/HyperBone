@@ -1,6 +1,6 @@
 hyperbone.Collection = class HyperCollection extends Backbone.Collection
   parse: (response) ->
-    @bone.service.parseCollection response
+    @bone.service.parseCollection response, @
 
   url: ->
     @bone.url @endpoint

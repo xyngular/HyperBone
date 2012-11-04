@@ -1,6 +1,6 @@
 hyperbone.Model = class HyperModel extends Backbone.Model
   parse: (response) ->
-    @bone.service.parseModel response
+    @bone.service.parseModel response, @
 
   url: ->
     if @has '_links'
