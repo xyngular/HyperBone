@@ -1,10 +1,10 @@
 hyperbone.util =
-	naturalModelName: (modelName) ->
-		parts = modelName.split('_')
-		natural = ''
+  naturalModelName: (modelName) ->
+    parts = modelName.split('_')
+    natural = ''
 
-		for part in parts
-			upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
-			natural = natural + upperPart
+    for part in parts
+      upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
+      natural = natural + upperPart
 
-		natural
+    natural
