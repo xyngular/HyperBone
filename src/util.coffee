@@ -8,3 +8,8 @@ hyperbone.util =
       natural = natural + upperPart
 
     natural
+
+  naturalCollectionName: (resourceName) ->
+    modelName = hyperbone.util.naturalModelName resourceName
+    modelName + 'Collection'
+
