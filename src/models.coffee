@@ -1,4 +1,7 @@
 hyperbone.Model = class HyperModel extends Backbone.Model
+  parse: (response) ->
+    @bone.service.parseModel response
+
   url: ->
     if @has '_links'
       links = @get '_links'
@@ -13,6 +16,5 @@ hyperbone.Model = class HyperModel extends Backbone.Model
 
     # A factory which returns a new class for whichever endpoint is passed to it
     class AutoModel extends HyperModel
-      initialize: ->
-        @bone = bone
-        @urlRoot = endpoint
+      bone: bone
+      urlRoot: endpoint
