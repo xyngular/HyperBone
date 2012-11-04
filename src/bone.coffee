@@ -1,5 +1,6 @@
 hyperbone.Bone = class Bone
   models: {}
+  collections: {}
 
   service: null
 
@@ -24,6 +25,9 @@ hyperbone.Bone = class Bone
   discover: ->
     @request @registry.root,
       success: @service.discoverResources
+
+  url: (url) ->
+    @service.url url
 
   request: (url, options) =>
     # Wraps jQuery's ajax call in order to automatically convert requests between

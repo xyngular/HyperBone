@@ -6,3 +6,6 @@ hyperbone.serviceTypes.ServiceType = class ServiceType
   request: (url, options) =>
     jQuery.ajax url, options
 
+  url: (url) ->
+    url
+
