@@ -5,7 +5,7 @@ hyperbone.Collection = class HyperCollection extends Backbone.Collection
   url: ->
     @bone.url @endpoint
 
-  @factory = (bone, model, endpoint) ->
+  @factory = (bone, collectionName, model, endpoint) ->
 
     class AutoCollection extends HyperCollection
       bone: bone
