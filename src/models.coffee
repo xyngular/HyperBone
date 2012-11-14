@@ -3,9 +3,8 @@ hyperbone.Model = class HyperModel extends Backbone.Model
     @bone.service.parseModel response, @
 
   url: ->
-    if @has '_links'
-      links = @get '_links'
-      url = links.self.href
+    if @meta? and @meta._links? and @meta._links.self?
+      url = @meta.links.self.href
 
     else
       url = Backbone.Model.prototype.url.call @
