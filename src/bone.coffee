@@ -6,7 +6,6 @@ hyperbone.Bone = class Bone
 
   registry:
     communicationType: 'cors'
-    serviceType: hyperbone.serviceTypes.HALServiceType
 
   constructor: (@originalOptions) ->
     _.extend @, Backbone.Events
