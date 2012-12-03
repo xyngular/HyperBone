@@ -1,4 +1,4 @@
-hyperbone.Model = class HyperModel extends Backbone.Model
+hyperbone.Model = class HyperModel extends Backbone.RelationalModel
   parse: (response) ->
     @bone.service.parseModel response, @
 
