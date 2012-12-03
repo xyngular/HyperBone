@@ -3,9 +3,13 @@ hyperbone.serviceTypes.ServiceType = class ServiceType
 
   discoverResources: (apiRoot) =>
 
+  url: (url) =>
+    url
+
   request: (url, options) =>
     jQuery.ajax url, options
 
-  url: (url) ->
-    url
+  parseModel: (response, model) =>
+
+  parseCollection: (response, collection) =>
 
