@@ -12,8 +12,10 @@ hyperbone.Model = class HyperModel extends Backbone.Model
     @bone.url url
 
   @factory: (bone, modelName, endpoint) ->
+    ### A factory which creates a new model for the given endpoint.
 
-    # A factory which returns a new class for whichever endpoint is passed to it
+    ###
+
     class AutoModel extends HyperModel
       bone: bone
       urlRoot: endpoint
