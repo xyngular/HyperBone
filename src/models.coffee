@@ -17,9 +17,9 @@ hyperbone.Model = class HyperModel extends Backbone.RelationalModel
     ###
 
     class AutoModel extends HyperModel
+      relations: []
       bone: bone
       urlRoot: endpoint
 
-    AutoModel.setup()
-
     return AutoModel
+

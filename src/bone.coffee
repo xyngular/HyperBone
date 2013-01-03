@@ -42,3 +42,4 @@ hyperbone.Bone = class Bone
       options.crossDomain = options.crossDomain or true
 
     @service.request url, options
+
