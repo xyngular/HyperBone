@@ -5,9 +5,9 @@ HyperBone provides interfaces for easily exposing, discovering, and
 understanding APIs consistently with [Backbone][bb].
 
 HyperBone consists of a "Bone", which acts as an intermediate adapter which
-uses plugins to translate APIs into backbone models. You can instantiate
-multiple bones using the same basic interface, and plugins will take over from
-there by providing you models and collections for making use of the API.
+uses plugins to translate APIs into backbone models. When you instantiate a
+bone and give it a plugin, HyperBone will take over from there by providing you
+models and collections for making use of the API represented by your plugin.
 
 With schema-based, versioned, RESTful APIs, HyperBone makes your boilerplate
 for representing APIs extremely minimal. With the following code and a driver
