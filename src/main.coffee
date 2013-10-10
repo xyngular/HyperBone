@@ -22,3 +22,9 @@
 
 window.hyperbone = window.hyperbone or {}
 window.hyperbone.serviceTypes = window.hyperbone.serviceTypes or {}
+
+require './util.coffee'
+require './bone.coffee'
+require './collection.coffee'
+require './models.coffee'
+require './service_types/base.coffee'

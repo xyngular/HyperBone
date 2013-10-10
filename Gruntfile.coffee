@@ -1,18 +1,19 @@
 module.exports = (grunt) ->
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
 
   configuration = grunt.file.readJSON 'package.json'
-  fileName = "dist/<%= configuration.name %>-#{ configuration.version #}.js"
+  fileName = "dist/#{ configuration.name }-#{ configuration.version #}.js"
 
-  grunt.initConfig
+  options =
     configuration: configuration
 
-    coffee:
-      target:
-        src: 'src/**/*.coffee'
-        dest: fileName
+    browserify:
+      dist:
+        files: {}
+
+        options: transform: ['coffeeify']
 
     concat:
       options:
@@ -30,9 +31,12 @@ module.exports = (grunt) ->
         src: fileName
         dest: fileName.replace /\.js$/, '.min.js'
 
+  options.browserify.dist.files[fileName] = 'src/main.coffee'
+
+  grunt.initConfig options
+
   grunt.registerTask 'default', [
-    'coffee'
+    'browserify'
     'concat'
     'uglify'
   ]
-
