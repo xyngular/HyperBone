@@ -4,7 +4,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-uglify'
 
   configuration = grunt.file.readJSON 'package.json'
-  fileName = "dist/<%= configuration.name %>-#{ configuration.version #}"
+  fileName = "dist/<%= configuration.name %>-#{ configuration.version #}.js"
 
   grunt.initConfig
     configuration: configuration
@@ -12,7 +12,7 @@ module.exports = (grunt) ->
     coffee:
       target:
         src: 'src/**/*.coffee'
-        dest: "#{fileName}.js"
+        dest: fileName
 
     concat:
       options:
@@ -22,13 +22,13 @@ module.exports = (grunt) ->
                 */\n\n"""
 
       target:
-        src: "#{fileName}.js"
-        dest: "#{fileName}.js"
+        src: fileName
+        dest: fileName
 
     uglify:
       target:
-        src: "#{fileName}.js"
-        dest: "#{fileName}.min.js"
+        src: fileName
+        dest: fileName.replace /\.js$/, '.min.js'
 
   grunt.registerTask 'default', [
     'coffee'
