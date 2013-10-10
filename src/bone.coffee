@@ -20,7 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-hyperbone.Bone = class Bone
+
+class Bone
   models: {}
   collections: {}
 
@@ -65,3 +66,5 @@ hyperbone.Bone = class Bone
 
     @service.request url, options
 
+
+module.exports = {Bone}

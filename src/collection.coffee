@@ -20,7 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-hyperbone.Collection = class HyperCollection extends Backbone.Collection
+
+class Collection extends Backbone.Collection
   parse: (response) ->
     @bone.service.parseCollection response, @
 
@@ -32,8 +33,10 @@ hyperbone.Collection = class HyperCollection extends Backbone.Collection
 
     ###
 
-    class AutoCollection extends HyperCollection
+    class AutoCollection extends Collection
       bone: bone
       model: model
       endpoint: endpoint
 
+
+module.exports = {Collection}

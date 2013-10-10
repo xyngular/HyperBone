@@ -20,18 +20,24 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-hyperbone.util =
-  naturalModelName: (modelName) ->
-    parts = modelName.split('_')
-    natural = ''
 
-    for part in parts
-      upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
-      natural = natural + upperPart
+naturalModelName = (modelName) ->
+  parts = modelName.split('_')
+  natural = ''
 
-    natural
+  for part in parts
+    upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
+    natural = natural + upperPart
 
-  naturalCollectionName: (resourceName) ->
-    modelName = hyperbone.util.naturalModelName resourceName
-    modelName + 'Collection'
+  natural
 
+
+naturalCollectionName = (resourceName) ->
+  modelName = hyperbone.util.naturalModelName resourceName
+  modelName + 'Collection'
+
+
+module.exports = {
+  naturalModelName
+  naturalCollectionName
+}
