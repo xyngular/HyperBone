@@ -20,7 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-hyperbone.Model = class HyperModel extends Backbone.RelationalModel
+
+class Model extends Backbone.RelationalModel
   parse: (response) ->
     @bone.service.parseModel response, @
 
@@ -38,10 +39,12 @@ hyperbone.Model = class HyperModel extends Backbone.RelationalModel
 
     ###
 
-    class AutoModel extends HyperModel
+    class AutoModel extends Model
       relations: []
       bone: bone
       urlRoot: endpoint
 
     return AutoModel
 
+
+module.exports = {Model}

@@ -20,11 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-window.hyperbone = window.hyperbone or {}
-window.hyperbone.serviceTypes = window.hyperbone.serviceTypes or {}
 
-require './util.coffee'
-require './bone.coffee'
-require './collection.coffee'
-require './models.coffee'
-require './service_types/base.coffee'
+HyperBone = {}
+HyperBone.util = require './util.coffee'
+
+
+HyperBone.Bone = require('./bone.coffee').Bone
+HyperBone.Model = require('./models.coffee').Model
+HyperBone.Collection = require('./collection.coffee').Collection
+HyperBone.ServiceType = require('./service_types/base.coffee').ServiceType
+
+
+window.HyperBone ?= HyperBone
