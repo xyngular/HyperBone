@@ -4,6 +4,7 @@
   "description": "Backbone adapter for exposing hypermedia APIs using HAL.",
   "version": "0.0.1",
   "homepage": "",
+  "license": "MIT",
   "repository": {
   "type": "git",
   "url": ""
