@@ -20,7 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-hyperbone.serviceTypes.ServiceType = class ServiceType
+
+class ServiceType
   constructor: (@bone) ->
 
   discoverResources: (apiRoot) =>
@@ -35,3 +36,5 @@ hyperbone.serviceTypes.ServiceType = class ServiceType
 
   parseCollection: (response, collection) =>
 
+
+module.exports = {ServiceType}

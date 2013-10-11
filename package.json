@@ -4,26 +4,30 @@
   "description": "Backbone adapter for exposing hypermedia APIs using HAL.",
   "version": "0.0.1",
   "homepage": "",
+  "license": "MIT",
   "repository": {
-  "type": "git",
-  "url": ""
+    "type": "git",
+    "url": ""
   },
   "engines": {
-  "node": "~0.6.10 || 0.8 || 0.9"
+    "node": "~0.6.10 || 0.8 || 0.9"
   },
   "scripts": {
-  "start": "brunch watch --server",
-  "test": "brunch test"
+    "start": "brunch watch --server",
+    "test": "brunch test"
   },
   "dependencies": {
-  "javascript-brunch": ">= 1.0 < 1.5",
-  "coffee-script-brunch": ">= 1.0 < 1.5",
-
-  "css-brunch": ">= 1.0 < 1.5",
-
-  "uglify-js-brunch": ">= 1.0 < 1.5",
-  "clean-css-brunch": ">= 1.0 < 1.5"
+    "javascript-brunch": ">= 1.0 < 1.5",
+    "coffee-script-brunch": ">= 1.0 < 1.5",
+    "css-brunch": ">= 1.0 < 1.5",
+    "uglify-js-brunch": ">= 1.0 < 1.5",
+    "clean-css-brunch": ">= 1.0 < 1.5"
   },
   "devDependencies": {
+    "grunt": "~0.4.1",
+    "coffeeify": "~0.5.1",
+    "grunt-browserify": "~1.2.8",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-concat": "~0.3.0"
   }
 }
