@@ -1,7 +1,7 @@
 {
   "author": "Alytis",
   "name": "hyperbone",
-  "description": "Backbone adapter for exposing hypermedia APIs using HAL.",
+  "description": "Backbone library for automated discovery of web services.",
   "version": "0.0.1",
   "homepage": "",
   "license": "MIT",
