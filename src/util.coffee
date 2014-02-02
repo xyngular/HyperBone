@@ -33,7 +33,7 @@ naturalModelName = (modelName) ->
 
 
 naturalCollectionName = (resourceName) ->
-  modelName = hyperbone.util.naturalModelName resourceName
+  modelName = naturalModelName resourceName
   modelName + 'Collection'
 
 
