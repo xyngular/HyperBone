@@ -1,3 +1,8 @@
+0.0.2
+-----
+
+- The parseOptions interface has been renamed to `initialize`.
+
 0.0.1
 -----
 
