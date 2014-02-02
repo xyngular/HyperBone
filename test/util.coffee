@@ -4,12 +4,23 @@
 
 
 describe 'Utility Function', ->
+  potential_inputs = [
+    'salad_dressing',
+    'salad-dressing'
+    'salad dressing',
+  ]
+
+  expectMatch = (translator, expectation) -> (item) ->
+    expect translator item
+      .to.equal expectation
+
+
   describe 'naturalModelName', ->
     it 'should translate strings as expected', ->
-      expect naturalModelName 'salad_dressing'
-        .to.equal 'SaladDressing'
+      expectation = 'SaladDressing'
+      potential_inputs.map expectMatch naturalModelName, expectation
 
   describe 'naturalCollectionName', ->
     it 'should translate strings as expected', ->
-      expect naturalCollectionName 'salad_dressing'
-        .to.equal 'SaladDressingCollection'
+      expectation = 'SaladDressingCollection'
+      potential_inputs.map expectMatch naturalCollectionName, expectation

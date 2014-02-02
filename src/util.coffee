@@ -22,11 +22,15 @@
 
 
 naturalModelName = (modelName) ->
-  parts = modelName.split('_')
+  parts = modelName
+    .replace '-', '_'
+    .replace ' ', '_'
+    .split '_'
+
   natural = ''
 
   for part in parts
-    upperPart = (part.charAt 0).toUpperCase() + (part.substring 1).toLowerCase()
+    upperPart = (part.charAt 0).toUpperCase() + part.substring 1
     natural = natural + upperPart
 
   natural
