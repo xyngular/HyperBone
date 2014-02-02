@@ -25,7 +25,7 @@ describe 'Model', ->
     root: '/api/v2/'
 
   bone = new Bone boneOptions
-  instanceRoot = boneOptions.root + 'banana/'
+  instanceRoot = boneOptions.root + 'banana/12/'
 
   Result = Model.factory bone, 'banana', instanceRoot
   instance = new Result
