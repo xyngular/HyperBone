@@ -21,20 +21,26 @@
 # THE SOFTWARE.
 
 
+class AbstractionError
+
+
 class ServiceType
   constructor: (@bone) ->
 
+  url: (url) => url
+  request: (url, options) => jQuery.ajax url, options
+
   discoverResources: (apiRoot) =>
-
-  url: (url) =>
-    url
-
-  request: (url, options) =>
-    jQuery.ajax url, options
+    throw new AbstractionError 'discoverResources has not been implemented'
 
   parseModel: (response, model) =>
+    throw new AbstractionError 'parseModel has not been implemented'
 
   parseCollection: (response, collection) =>
+    throw new AbstractionError 'parseCollection has not been implemented'
 
 
-module.exports = {ServiceType}
+module.exports = {
+  AbstractionError
+  ServiceType
+}
