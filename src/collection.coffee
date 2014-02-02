@@ -28,15 +28,15 @@ class Collection extends Backbone.Collection
   url: ->
     @bone.url @endpoint
 
-  @factory = (bone, collectionName, model, endpoint) ->
+  @factory = (bone, collectionName, Model, endpoint) ->
     ### A factory that creates a new collection for the given endpoint.
 
     ###
 
     class AutoCollection extends Collection
       bone: bone
-      model: model
-      endpoint: endpoint
+      model: Model
+      urlRoot: endpoint
 
 
 module.exports = {Collection}
