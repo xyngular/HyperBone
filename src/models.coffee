@@ -36,11 +36,10 @@ class Model extends Backbone.RelationalModel
     ###
 
     class AutoModel extends Model
-      relations: []
-      bone: bone
       urlRoot: endpoint
+      bone: bone
 
-    return AutoModel
+      relations: []
 
 
 module.exports = {Model}

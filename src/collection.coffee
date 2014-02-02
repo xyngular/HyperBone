@@ -34,9 +34,10 @@ class Collection extends Backbone.Collection
     ###
 
     class AutoCollection extends Collection
-      bone: bone
-      model: Model
       urlRoot: endpoint
+      model: Model
+
+      bone: bone
 
 
 module.exports = {Collection}
