@@ -30,19 +30,20 @@ class Bone
   registry:
     communicationType: 'cors'
 
-  constructor: (@originalOptions) ->
+  constructor: (options) ->
     _.extend @, Backbone.Events
-    _.extend @registry, @originalOptions
 
-    @parseOptions()
+    @originalOptions = _.extend {}, options
 
-    if @originalOptions.autoDiscover? and @originalOptions.autoDiscover is true
+    @registry = _.extend @registry, @initialize options
+    @service = @createService()
+
+    if @registry.autoDiscover is true
       @originalOptions.discover()
 
-  parseOptions: =>
-    @registry.communicationType = @registry.communicationType.toLowerCase()
+  initialize: (options) -> options
 
-    @service = new @registry.serviceType @
+  createService: -> new @registry.serviceType @
 
   discover: ->
     @request @registry.root,
@@ -51,18 +52,13 @@ class Bone
   url: (url) ->
     @service.url url
 
-  request: (url, options) =>
-    # Wraps jQuery's ajax call in order to automatically convert requests between
-    # different communication types (IE, CORS or JSON-P) and generate URLs
-    # when necessary.
-
-    options = options or {}
-
-    options.dataType = @registry.communicationType
+  request: (url, options) ->
+    options = _.extend {}, options,
+      dataType: @registry.communicationType.toLowerCase()
 
     # TODO: Get this to use the HTTP standard Accept header, not ?format=json-p
-    if @registry.communicationType == 'jsonp'
-      options.crossDomain = options.crossDomain or true
+    if options.dataType.toLowerCase() == 'jsonp'
+      options.crossDomain ?= true
 
     @service.request url, options
 
