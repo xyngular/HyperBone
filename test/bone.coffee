@@ -24,15 +24,20 @@ describe 'Bone', ->
     it 'sets #originalOptions to the original provided object', sinon.test ->
       bone = new Bone options
 
-      expect(bone.originalOptions).to.deep.equal options
+      expect bone.originalOptions
+        .to.deep.equal options
 
     it 'provides the #initialize interface', sinon.test ->
       initialize = Bone::initialize
       Bone::initialize = sinon.spy Bone::initialize
 
       bone = new Bone options
-      expect(bone.initialize.calledOnce).to.be.true
-      expect(bone.initialize.firstCall.args[0]).to.deep.equal options
+
+      expect bone.initialize.calledOnce
+        .to.be.true
+
+      expect bone.initialize.firstCall.args[0]
+        .to.deep.equal options
 
       Bone::initialize = initialize
 
@@ -41,21 +46,27 @@ describe 'Bone', ->
       Bone::createService = sinon.spy Bone::createService
 
       bone = new Bone options
-      expect(bone.createService.calledOnce).to.be.true
+
+      expect bone.createService.calledOnce
+        .to.be.true
 
       Bone::createService = createService
 
   describe '#url', ->
     it 'wraps #url using #service#url', sinon.test ->
       bone = new Bone options
-      expect(bone.url()).to.equal fakeURL
+
+      expect bone.url()
+        .to.equal fakeURL
 
   describe '#request', ->
     it 'generates a request using #service#request type', sinon.test ->
       bone = new Bone options
 
       request = bone.request '/example/'
-      expect(request).to.equal '/example/'
+
+      expect request
+        .to.equal '/example/'
 
   describe '#discover', ->
     it 'calls #service#request using the root endpoint', sinon.test ->
@@ -67,8 +78,11 @@ describe 'Bone', ->
       result = bone.discover()
       args = Bone::request.firstCall.args
 
-      expect(args[0]).to.equal options.root
-      expect(args[1]).to.deep.equal
-        success: bone.service.discoverResources
+      expect args[0]
+        .to.equal options.root
+
+      expect args[1]
+        .to.deep.equal
+          success: bone.service.discoverResources
 
       Bone::request = request
