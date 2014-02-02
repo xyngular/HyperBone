@@ -6,3 +6,5 @@ global._ ?= require 'lodash'
 
 global.jQuery ?= require 'jquery'
 global.$ ?= global.jQuery
+
+require 'backbone-relational'
