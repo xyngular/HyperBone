@@ -1,7 +1,7 @@
 {
   "author": "Alytis",
   "name": "hyperbone",
-  "description": "Backbone adapter for exposing hypermedia APIs using HAL.",
+  "description": "Backbone library for automated discovery of web services.",
   "version": "0.0.1",
   "homepage": "",
   "license": "MIT",
@@ -16,13 +16,7 @@
     "start": "brunch watch --server",
     "test": "brunch test"
   },
-  "dependencies": {
-    "javascript-brunch": ">= 1.0 < 1.5",
-    "coffee-script-brunch": ">= 1.0 < 1.5",
-    "css-brunch": ">= 1.0 < 1.5",
-    "uglify-js-brunch": ">= 1.0 < 1.5",
-    "clean-css-brunch": ">= 1.0 < 1.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
     "coffeeify": "~0.5.1",
