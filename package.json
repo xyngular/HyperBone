@@ -13,8 +13,7 @@
     "node": "~0.6.10 || 0.8 || 0.9"
   },
   "scripts": {
-    "start": "brunch watch --server",
-    "test": "brunch test"
+    "test": "mocha"
   },
   "dependencies": {},
   "devDependencies": {
