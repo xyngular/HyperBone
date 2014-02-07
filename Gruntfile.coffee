@@ -14,7 +14,7 @@ module.exports = (grunt) ->
     coffee:
       compileWithMaps:
         options:
-          sourceMap: yes
+          sourceMap: no
 
     concat:
       options:
