@@ -1,7 +1,9 @@
-{Bone} = require '../src/bone'
-{Model} = require '../src/models'
-{Collection} = require '../src/collection'
-{ServiceType} = require '../src/service_types/base'
+{
+  Bone
+  Model
+  Collection
+  ServiceType
+} = require '../src'
 
 
 sinon = require 'sinon'

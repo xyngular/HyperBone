@@ -1,5 +1,4 @@
-{naturalModelName, naturalCollectionName} = require '../src/util'
-
+{util} = require '../src'
 {expect} = require 'chai'
 
 
@@ -18,9 +17,9 @@ describe 'Utility Function', ->
   describe 'naturalModelName', ->
     it 'should translate strings as expected', ->
       expectation = 'SaladDressing'
-      potential_inputs.map expectMatch naturalModelName, expectation
+      potential_inputs.map expectMatch util.naturalModelName, expectation
 
   describe 'naturalCollectionName', ->
     it 'should translate strings as expected', ->
       expectation = 'SaladDressingCollection'
-      potential_inputs.map expectMatch naturalCollectionName, expectation
+      potential_inputs.map expectMatch util.naturalCollectionName, expectation

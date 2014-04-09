@@ -1,4 +1,9 @@
-{ServiceType, AbstractionError} = require '../src/service_types/base'
+{
+  ServiceType
+} = require '../src'
+
+
+jQuery = require 'jQuery'
 
 
 sinon = require 'sinon'
@@ -16,17 +21,17 @@ describe 'ServiceType', ->
   describe 'parseModel', ->
     it 'should throw an AbstractionError',
       expect_error type.parseModel,
-      AbstractionError
+      Error
 
   describe '#discoverResources', ->
     it 'should throw an AbstractionError',
       expect_error type.discoverResources,
-      AbstractionError
+      Error
 
   describe '#parseCollection', ->
     it 'should throw an parseCollection',
       expect_error type.parseCollection,
-      AbstractionError
+      Error
 
   describe 'url', ->
     it 'should return the provided url', ->
