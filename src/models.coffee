@@ -26,11 +26,7 @@ class Model extends Backbone.RelationalModel
     @bone.service.parseModel response, @
 
   url: ->
-    if @meta? and @meta._links? and @meta._links.self?
-      url = @meta.links.self.href
-
-    else
-      url = Backbone.Model.prototype.url.call @
+    url = Backbone.Model.prototype.url.call @
 
     @bone.url url
 
@@ -40,11 +36,10 @@ class Model extends Backbone.RelationalModel
     ###
 
     class AutoModel extends Model
-      relations: []
-      bone: bone
       urlRoot: endpoint
+      bone: bone
 
-    return AutoModel
+      relations: []
 
 
 module.exports = {Model}

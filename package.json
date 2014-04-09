@@ -1,7 +1,7 @@
 {
   "author": "Alytis",
   "name": "hyperbone",
-  "description": "Backbone library for automated discovery of web services.",
+  "description": "Backbone adapter for exposing hypermedia APIs using HAL.",
   "version": "0.0.1",
   "homepage": "",
   "license": "MIT",
@@ -13,8 +13,7 @@
     "node": "~0.6.10 || 0.8 || 0.9"
   },
   "scripts": {
-    "start": "brunch watch --server",
-    "test": "brunch test"
+    "test": "mocha"
   },
   "dependencies": {},
   "devDependencies": {
@@ -22,6 +21,14 @@
     "coffeeify": "~0.5.1",
     "grunt-browserify": "~1.2.8",
     "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-concat": "~0.3.0"
+    "grunt-contrib-concat": "~0.3.0",
+    "mocha": "~1.17.1",
+    "sinon": "~1.7.3",
+    "chai": "~1.9.0",
+    "backbone": "~1.1.0",
+    "coffee-script": "~1.7.1",
+    "lodash": "~2.4.1",
+    "jquery": "~2.1.0",
+    "backbone-relational": "~0.8.6"
   }
 }
