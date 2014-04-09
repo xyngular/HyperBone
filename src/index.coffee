@@ -3,7 +3,6 @@ amdExports = [
   'jquery',
   'underscore'
   'backbone'
-  'backbone-relational'
 ]
 
 
@@ -11,23 +10,22 @@ setup = (root, factory) ->
   if typeof define is 'function' and define.amd
     define amdExports, (exports, jQuery, _, Backbone, relational) ->
       root.HyperBone = exports
-      factory exports, jQuery, _, Backbone, relational.RelationalModel
+      factory exports, jQuery, _, Backbone
 
   else if typeof exports is 'object'
     jQuery = require 'jQuery'
 
     _ = require 'underscore'
     Backbone = require 'backbone'
-    {RelationalModel} = require 'backbone-relational'
 
-    factory exports, jQuery, _, Backbone, RelationalModel
+    factory exports, jQuery, _, Backbone
 
   else
     root.HyperBone = {}
-    factory root.HyperBone, jQuery, root._, root.Backbone, root.Backbone.RelationalModel, root._
+    factory root.HyperBone, jQuery, root._, root.Backbone
 
 
-setup @, (HyperBone, jQuery, _, Backbone, RelationalModel) ->
+setup @, (HyperBone, jQuery, _, Backbone) ->
   class AbstractionError extends Error
   class ConfigurationError extends Error
 
@@ -46,34 +44,10 @@ setup @, (HyperBone, jQuery, _, Backbone, RelationalModel) ->
 
     return natural
 
+
   naturalCollectionName = (resourceName) ->
     modelName = naturalModelName resourceName
     modelName + 'Collection'
-
-
-  class Model extends RelationalModel
-    parse: (response) -> @bone.service.parseModel response, @
-    url: -> @bone.url Backbone.Model.prototype.url.call @
-
-    @factory: (bone, modelName, endpoint) ->
-      class AutoModel extends Model
-        urlRoot: endpoint
-        bone: bone
-
-        relations: []
-
-
-  class Collection extends Backbone.Collection
-    parse: (response) -> @bone.service.parseCollection response, @
-
-    url: -> @bone.url @endpoint
-
-    @factory = (bone, collectionName, Model, endpoint) ->
-      class AutoCollection extends Collection
-        urlRoot: endpoint
-        model: Model
-
-        bone: bone
 
 
   class Bone
@@ -92,12 +66,35 @@ setup @, (HyperBone, jQuery, _, Backbone, RelationalModel) ->
 
       @registry = _.extend @registry, @initialize options
 
+      @registry.modelType ?= Backbone.Model
+      @registry.collectionType ?= Backbone.Collection
+
       @service = @createService()
 
       if @registry.autoDiscover is true
         @originalOptions.discover()
 
     initialize: (options) -> options
+
+    createModel: (modelName, endpoint) ->
+      return @registry.modelType.extend
+        urlRoot: endpoint
+        bone: @
+
+        relations: []
+
+        parse: (response) -> @bone.service.parseModel response, @
+        url: -> @bone.url Backbone.Model.prototype.url.call @
+
+    createCollection: (collectionName, Model, endpoint) ->
+      return @registry.collectionType.extend
+        urlRoot: endpoint
+        model: Model
+
+        bone: @
+
+        parse: (response) -> @bone.service.parseCollection response, @
+        url: -> @bone.url @endpoint
 
     createService: ->
       unless @registry.serviceType?
@@ -146,9 +143,6 @@ setup @, (HyperBone, jQuery, _, Backbone, RelationalModel) ->
 
   HyperBone.ConfigurationError = ConfigurationError
   HyperBone.AbstractionError = AbstractionError
-
-  HyperBone.Model = Model
-  HyperBone.Collection = Collection
 
   HyperBone.Bone = Bone
   HyperBone.ServiceType = ServiceType

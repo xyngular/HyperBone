@@ -29,27 +29,17 @@ describe 'Model', ->
   bone = new Bone boneOptions
   instanceRoot = boneOptions.root + 'banana/12/'
 
-  Result = Model.factory bone, 'banana', instanceRoot
+  Result = bone.createModel 'banana', instanceRoot
   instance = new Result
 
-  describe '#factory', ->
-    it 'generates a new RelationalModel type', ->
-      expect Result::urlRoot
-        .to.equal instanceRoot
+  describe 'created Models', ->
+    describe '#url', ->
+      it 'returns the instance URL using #bone', ->
+        expect instance.url()
+          .to.equal fakeURL
 
-      expect Result::relations
-        .to.deep.equal []
-
-      expect Result::bone
-        .to.equal bone
-
-  describe '#url', ->
-    it 'returns the instance URL using #bone', ->
-      expect instance.url()
-        .to.equal fakeURL
-
-  describe '#parse', ->
-    it 'return the model as parsed by #bone#service#parseModel', ->
-      expect instance.parse()
-        .to.deep.equal
-          key: 'value'
+    describe '#parse', ->
+      it 'return the model as parsed by #bone#service#parseModel', ->
+        expect instance.parse()
+          .to.deep.equal
+            key: 'value'

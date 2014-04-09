@@ -27,14 +27,13 @@ describe 'Collection', ->
     serviceType: MockService
     root: '/api/v2/'
 
-  ModelType = Model.factory bone, 'banana', boneOptions.root + 'bananas/'
-
   bone = new Bone boneOptions
   instanceRoot = boneOptions.root + 'bananas/'
 
-  Result = Collection.factory bone, 'bananas', ModelType, instanceRoot
+  ModelType = bone.createModel 'banana', instanceRoot + '12/'
+  Result = bone.createCollection 'bananas', ModelType, instanceRoot
 
-  describe '#factory', ->
+  describe 'generated Collections', ->
     it 'generates a new Collection type', ->
       expect Result::urlRoot
         .to.equal instanceRoot
